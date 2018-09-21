@@ -1,20 +1,20 @@
+$("#submit").on("click", function(){
+    event.preventDefault();
 // Get the users position and then call the getPosition function
 navigator.geolocation.getCurrentPosition(getPosition);
 // Called when a user allows us to access their position
+
 function getPosition(position) {
     // log the position object
     console.log(position);
     // store the latitued and longitude into variables
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
+    
+    console.log(lat,lon);
     // pass the latitude and longitude into a function that searches for restuarants close by
-    googlePlacesSearch(lat, lon);
+   googlePlacesSearch(lat, lon);
 }
-
-
-
-
-
 
         // find restuarants within a 12.42 mile(20 km) radius of the lat lon passed in
         function googlePlacesSearch(lat, lon) {
@@ -22,13 +22,11 @@ function getPosition(position) {
             var proxyUrl = "https://cors-anywhere.herokuapp.com/";
             // add proxy url to the google apis url
 
-    $("#submit").on("click", function (e) {
-        e.preventDefault();
-        var foodType = $("#food-type").val();
-        $("#results").empty();
-
+    
+        var foodType = $("#food-type").val().trim();
         console.log(foodType);
-            var queryURL = proxyUrl + "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&radius=20000&type=restaurant&keyword=" + foodType + "&key=AIzaSyB3mWQO5pN0C9zmp5kRAD3H10NYKVv3ohA"
+        $("#food-type").val("");
+            var queryURL = proxyUrl + "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&radius=10000&type=restaurant&keyword=" + foodType + "&key=AIzaSyB3mWQO5pN0C9zmp5kRAD3H10NYKVv3ohA"
             // create the ajax request
             $.ajax({
                 url: queryURL,
@@ -39,8 +37,9 @@ function getPosition(position) {
                 // run the add to page funtion to throw results (inside the response object) onto our page
                 addToPage(response.results);
             });
-        })};
-
+        }
+    
+    });
 
         // This will add all of the results ont our page
         function addToPage(data) {
@@ -68,4 +67,5 @@ function getPosition(position) {
             });
             // append the container div to the root div in our html
             $("#results").append(div);
-        };
+        }
+    
