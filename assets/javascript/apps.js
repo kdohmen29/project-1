@@ -1,29 +1,71 @@
-// Get the users position
-
-function getPosition(position){
+// Get the users position and then call the getPosition function
+navigator.geolocation.getCurrentPosition(getPosition);
+// Called when a user allows us to access their position
+function getPosition(position) {
+    // log the position object
     console.log(position);
+    // store the latitued and longitude into variables
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
-    yelpSearch(lat, lon);
-    console.log(lat,lon);
+    // pass the latitude and longitude into a function that searches for restuarants close by
+    googlePlacesSearch(lat, lon);
 }
 
-function yelpSearch (lat, lon) {
-    var queryURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ lat +","+ lon +"&radius=50&type=restaurant&keyword=Pizza&key=AIzaSyB3mWQO5pN0C9zmp5kRAD3H10NYKVv3ohA"
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-      }).then(function(response) {
-        console.log(response);
-      });
-}
-navigator.geolocation.getCurrentPosition(getPosition);
 
 
 
 
 
-//API Key for google places
-var apiKey = AIzaSyAkOtiqPiRW-e8Ez-dYbPv3tMN6_v6Q5qE;
+        // find restuarants within a 12.42 mile(20 km) radius of the lat lon passed in
+        function googlePlacesSearch(lat, lon) {
+            // setup proxy
+            var proxyUrl = "https://cors-anywhere.herokuapp.com/";
+            // add proxy url to the google apis url
+
+    $("#submit").on("click", function (e) {
+        e.preventDefault();
+        var foodType = $("#food-type").val();
+        $("#results").empty();
+
+        console.log(foodType);
+            var queryURL = proxyUrl + "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&radius=20000&type=restaurant&keyword=" + foodType + "&key=AIzaSyB3mWQO5pN0C9zmp5kRAD3H10NYKVv3ohA"
+            // create the ajax request
+            $.ajax({
+                url: queryURL,
+                method: "GET",
+            }).then(function (response) {
+                //   when the request returns log the response
+                console.log(response);
+                // run the add to page funtion to throw results (inside the response object) onto our page
+                addToPage(response.results);
+            });
+        })};
 
 
+        // This will add all of the results ont our page
+        function addToPage(data) {
+            // create a div to contain the results
+            var div = $("<div id='newDiv'>");
+            // for each result do the following
+            data.forEach(restaurant => {
+                // grab the address out of the restuarnt
+                var address = restaurant.vicinity;
+                // grab the name of the restaurant and create and H1 with the name as text
+                var title = $("<h1>").text(restaurant.name);
+                // append the restaurant name to the container div
+                div.append(title);
+                // for each entry in restaurant photos
+                restaurant.photos.forEach(photo => {
+                    // grab the html attrubution (an a tag in string form)
+                    var aTag = photo.html_attributions[0];
+                    // parse the string into html
+                    var link = $.parseHTML(aTag)[0];
+                    // set the newly parsed a tag's inner html to be the address of the restaurant 
+                    link.innerHTML = address;
+                    // append that link to the container div
+                    div.append(link);
+                })
+            });
+            // append the container div to the root div in our html
+            $("#results").append(div);
+        };
