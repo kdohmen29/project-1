@@ -1,6 +1,17 @@
-h1 {
+body {
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    max-width: 85%;
+}
+button {
+    margin-top: 2em;
+}
+/* h1 {
     background-color: crimson;
     border-radius: 12px;
     margin: auto;
+    margin: 1em;
     width: 75%;
-}
+    text-align: center;
+} */

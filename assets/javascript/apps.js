@@ -1,5 +1,6 @@
 $("#submit").on("click", function(){
     event.preventDefault();
+    $("#results").empty();
 // Get the users position and then call the getPosition function
 navigator.geolocation.getCurrentPosition(getPosition);
 // Called when a user allows us to access their position
@@ -44,7 +45,7 @@ function getPosition(position) {
         // This will add all of the results ont our page
         function addToPage(data) {
             // create a div to contain the results
-            var div = $("<div id='newDiv'>");
+            var div = $("<div>");
             // for each result do the following
             data.forEach(restaurant => {
                 // grab the address out of the restuarnt
