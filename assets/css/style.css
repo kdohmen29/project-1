@@ -19,13 +19,13 @@ button {
 .newh1:nth-child(odd) {
     background-color: lightgray;
 }
-#results {
+/* #results {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
     grid-gap: 30px;
     margin: 30px;
-}
+} */
 /* h1 {
     background-color: crimson;
     border-radius: 12px;
