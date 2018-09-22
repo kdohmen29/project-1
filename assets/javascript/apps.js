@@ -10,11 +10,12 @@ var config = {
   };
   firebase.initializeApp(config);
   var userData = firebase.database().ref();
-
+  $("#result").hide();
 $("#loading").hide();
 $("#submit").on("click", function () {
     event.preventDefault();
     $("#results").empty();
+    $("#result").show();
     $("#loading").show();
     M.toast({html: "Hunger no More!"})
     // Get the users position and then call the getPosition function
@@ -49,11 +50,13 @@ $("#submit").on("click", function () {
             url: queryURL,
             method: "GET",
         }).then(function (response) {
-            $("#loading").hide()
+            $("#loading").hide();
+            var limit = 10;
+            var limitedList = response.results.slice(0,limit);
             //   when the request returns log the response
             console.log(response);
             // run the add to page funtion to throw results (inside the response object) onto our page
-            addToPage(response.results);
+            addToPage(limitedList);
         });
         
         var time = moment().format("MMMM Do YY, dddd, hh:mm A");
@@ -71,7 +74,7 @@ userData.on("child_added", function(childSnapshot){
     var data = childSnapshot.val();
     var searchItem = data.userInput;
     var searchT = data.searchTime;
-    $(".history").append("On"+" "+seachT + "you searched for" + " "+searchItem);
+    $(".history").prepend("<br> On "+ searchT + " you searched for " + searchItem + "<br>");
 });
 
 // This will add all of the results on to your page
@@ -98,7 +101,7 @@ function addToPage(data) {
             div.append(link);
         })
     });
-    // append the container div to the root div in our html
+    // append the container div to the results div in our html
     $("#results").append(div);
 }
 });

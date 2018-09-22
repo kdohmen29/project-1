@@ -15,22 +15,31 @@
 <body>
     <h1 class="card-panel teal lighten-2 center-align">Lunch Picker</h1>
     <form>
-        <div class="form-row form-row align-items-center">
+        <div>
             <div class="kindOfFood">
-                <input id="food-type"  placeholder="What do you want to eat?" class="form-control" type="text">
-                <div class="history">History</div>
+                <div>
+                    <input id="food-type" placeholder="What do you want to eat?" class="form-control" type="text">
+                    <button class="btn-large pulse waves-effect waves-red" id="submit" type="submit">Feed ME!</button>
+                </div>
+                <div class="recentEats">Recent Eats
+                    <div class="history"></div>
+                </div>
             </div>
-            <button class="btn-large pulse waves-effect waves-red" id="submit" type="submit">Feed ME!</button>
     </form>
-    <div class="container" id="results">
-    </div>
-    <div class="progress" id="loading">
+    <hr>
+    <div>
+        <h2 class="card-panel teal lighten-2 center-align" id="result">Make a Selection</h2>
+        <div class="container">
+            <div id="results"></div>
+        </div>
+        <div class="progress" id="loading">
             <div class="indeterminate"></div>
         </div>
-        <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
-        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js">
-        </script>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="assets/javascript/apps.js"></script>
 </body>

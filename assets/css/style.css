@@ -15,9 +15,13 @@ button {
     margin: 30px;
 }
 
-}
 .newh1:nth-child(odd) {
     background-color: lightgray;
+    padding: 15px;
+    border-radius: 7px;
+}
+.progress {
+    margin-top: 50px;     
 }
 /* #results {
     display: grid;
