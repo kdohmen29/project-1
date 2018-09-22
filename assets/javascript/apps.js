@@ -1,3 +1,16 @@
+$(document).ready(function(){
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyBboNzT1euXvV91cZ1PIktgvtwbd9-GZOk",
+    authDomain: "lunch-project-2b999.firebaseapp.com",
+    databaseURL: "https://lunch-project-2b999.firebaseio.com",
+    projectId: "lunch-project-2b999",
+    storageBucket: "lunch-project-2b999.appspot.com",
+    messagingSenderId: "251100820568"
+  };
+  firebase.initializeApp(config);
+  var userData = firebase.database().ref();
+
 $("#loading").hide();
 $("#submit").on("click", function () {
     event.preventDefault();
@@ -29,7 +42,7 @@ $("#submit").on("click", function () {
         var foodType = $("#food-type").val().trim();
         console.log(foodType);
         $("#food-type").val("");
-        var queryURL = proxyUrl + "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&radius=10000&type=restaurant&keyword=" + foodType + "&key=AIzaSyB3mWQO5pN0C9zmp5kRAD3H10NYKVv3ohA"
+        var queryURL = proxyUrl + "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&radius=5000&type=restaurant&keyword=" + foodType + "&key=AIzaSyB3mWQO5pN0C9zmp5kRAD3H10NYKVv3ohA"
         // create the ajax request
         $.ajax({
             url: queryURL,
@@ -41,8 +54,22 @@ $("#submit").on("click", function () {
             // run the add to page funtion to throw results (inside the response object) onto our page
             addToPage(response.results);
         });
+        
+        var time = moment().format("MMMM Do YY, dddd, hh:mm A");
+        var newSearch = {
+            userInput: foodType,
+            searchTime: time,
+        }
+        userData.push(newSearch);
     }
 
+});
+
+userData.on("child_added", function(childSnapshot){
+    var data = childSnapshot.val();
+    var searchItem = data.userInput;
+    var searchT = data.searchTime;
+    $(".history").append("On"+" "+seachT + "you searched for" + " "+searchItem);
 });
 
 // This will add all of the results ont our page
@@ -72,4 +99,4 @@ function addToPage(data) {
     // append the container div to the root div in our html
     $("#results").append(div);
 }
-
+});
