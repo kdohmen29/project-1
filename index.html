@@ -13,20 +13,14 @@
 </head>
 
 <body>
-    <h1 class="card-panel teal lighten-2 center-align"> What's for lunch today?</h1>
+    <h1 class="card-panel teal lighten-2 center-align">Lunch Picker</h1>
     <form>
         <div class="form-row form-row align-items-center">
-            <div class="col-xs-4">
-                <label for="kind of food">Kind of Food</label>
-                <input id="food-type"  placeholder="Pizza" class="form-control" type="text">
+            <div class="kindOfFood">
+                <input id="food-type"  placeholder="What do you want to eat?" class="form-control" type="text">
+                <div class="history">History</div>
             </div>
-            <div class="col-xs-2">
-                <label for="ratings">Ratings</label>
-                <input id="Ratings" class="form-control" type="number">
-            </div>
-            <!-- <button class="btn btn-primary" id="location-btn" type="submit">Get Location</button> -->
-
-            <button class="btn-large pulse waves-effect waves-light" id="submit" type="submit">Feed ME!</button>
+            <button class="btn-large pulse waves-effect waves-red" id="submit" type="submit">Feed ME!</button>
     </form>
     <div class="container" id="results">
     </div>
