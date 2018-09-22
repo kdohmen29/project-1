@@ -15,7 +15,8 @@ $("#loading").hide();
 $("#submit").on("click", function () {
     event.preventDefault();
     $("#results").empty();
-    $("#loading").show()
+    $("#loading").show();
+    M.toast({html: "Hunger no More!"})
     // Get the users position and then call the getPosition function
     navigator.geolocation.getCurrentPosition(getPosition);
     // Called when a user allows us to access their position
@@ -65,6 +66,7 @@ $("#submit").on("click", function () {
 
 });
 
+
 userData.on("child_added", function(childSnapshot){
     var data = childSnapshot.val();
     var searchItem = data.userInput;
@@ -72,7 +74,7 @@ userData.on("child_added", function(childSnapshot){
     $(".history").append("On"+" "+seachT + "you searched for" + " "+searchItem);
 });
 
-// This will add all of the results ont our page
+// This will add all of the results on to your page
 function addToPage(data) {
     // create a div to contain the results
     var div = $("<div>");
@@ -81,7 +83,7 @@ function addToPage(data) {
         // grab the address out of the restuarnt
         var address = restaurant.vicinity;
         // grab the name of the restaurant and create and H1 with the name as text
-        var title = $("<h1>").text(restaurant.name);
+        var title = $("<h1 class='newh1'>").text(restaurant.name);
         // append the restaurant name to the container div
         div.append(title);
         // for each entry in restaurant photos
