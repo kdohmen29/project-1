@@ -69,8 +69,10 @@ $("#submit").on("click", function () {
 
 });
 
-
-userData.on("child_added", function(childSnapshot){
+var query = userData.orderByChild('searchTime').limitToLast(5);
+query.on("child_added", function(childSnapshot){
+    
+    console.log(userData);
     var data = childSnapshot.val();
     var searchItem = data.userInput;
     var searchT = data.searchTime;
