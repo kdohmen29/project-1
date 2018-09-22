@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Lunch Picker</title>
     <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
 <body>
-    <h1 class="justify-content-center text-center"> What's for lunch today?</h1>
+    <h1 class="card-panel teal lighten-2 center-align"> What's for lunch today?</h1>
     <form>
-        <div class="form-row" "form-row align-items-center">
+        <div class="form-row form-row align-items-center">
             <div class="col-xs-4">
                 <label for="kind of food">Kind of Food</label>
-                <input id="food-type" class="form-control" type="text">
+                <input id="food-type"  placeholder="Pizza" class="form-control" type="text">
             </div>
             <div class="col-xs-2">
                 <label for="ratings">Ratings</label>
@@ -26,21 +26,13 @@
             </div>
             <!-- <button class="btn btn-primary" id="location-btn" type="submit">Get Location</button> -->
 
-            <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+            <button class="btn-large pulse waves-effect waves-light" id="submit" type="submit">Feed ME!</button>
     </form>
     <div class="container" id="results">
-        <div class="row">
-            <div class="col-4">
-                Picture
-            </div>
-            <div class="col-4">
-                Info
-            </div>
-            <div class="col-4">
-                Map
-            </div>
-        </div>
     </div>
+    <div class="progress" id="loading">
+            <div class="indeterminate"></div>
+        </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="assets/javascript/apps.js"></script>
