@@ -76,7 +76,7 @@ query.on("child_added", function(childSnapshot){
     var data = childSnapshot.val();
     var searchItem = data.userInput;
     var searchT = data.searchTime;
-    $(".history").prepend("<br> On "+ searchT + " you searched for " + searchItem + "<br>");
+    $(".history").prepend("<br> On "+ searchT + " you searched for " + "<strong>" + searchItem + "</strong><br>");
 });
 
 // This will add all of the results on to your page
