@@ -4,6 +4,9 @@ body {
     margin-bottom: 2em;
     max-width: 85%;
 }
+#header {
+    font-family: cursive;
+}
 button {
     margin-top: 2em;
 }
@@ -14,6 +17,23 @@ button {
     grid-gap: 30px;
     margin: 30px;
 }
+.recentEats {
+    background-color: #ff6d00;
+    padding: 15px;
+    border-radius: 7px;
+    text-align: center;
+    font-family: cursive;
+    font-size: 3em;
+}
+hr {
+    color: gray;
+}
+.history {
+    border-radius: 7px;
+    padding: 15px;
+    font-size: 15px;
+
+}
 
 .newh1:nth-child(odd) {
     background-color: lightgray;
@@ -23,13 +43,9 @@ button {
 .progress {
     margin-top: 50px;     
 }
-/* #results {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-
-    grid-gap: 30px;
-    margin: 30px;
-} */
+#result {
+    font-family: cursive;
+}
 /* h1 {
     background-color: crimson;
     border-radius: 12px;
