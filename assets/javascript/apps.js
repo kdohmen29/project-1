@@ -17,6 +17,7 @@ $("#submit").on("click", function () {
     $("#results").empty();
     $("#result").show();
     $("#loading").show();
+
     M.toast({html: "Hunger no More!"})
     // Get the users position and then call the getPosition function
     navigator.geolocation.getCurrentPosition(getPosition);
@@ -57,6 +58,7 @@ $("#submit").on("click", function () {
             console.log(response);
             // run the add to page funtion to throw results (inside the response object) onto our page
             addToPage(limitedList);
+            
         });
         
         var time = moment().format("MMMM Do YY, dddd, hh:mm A");
@@ -65,20 +67,26 @@ $("#submit").on("click", function () {
             searchTime: time,
         }
         userData.push(newSearch);
+        displayRecentSearches();
     }
 
 });
 
+function displayRecentSearches(){
+
+$(".history").empty();
+
 var query = userData.orderByChild('searchTime').limitToLast(5);
 query.on("child_added", function(childSnapshot){
     
-    console.log(userData);
+    // console.log(userData);
     var data = childSnapshot.val();
     var searchItem = data.userInput;
     var searchT = data.searchTime;
-    $(".history").prepend("<br> On "+ searchT + " you searched for " + "<strong>" + searchItem + "</strong><br>");
+    $(".history").prepend("<br> On "+ searchT + " you searched for <span class='search-item'>" + searchItem + "</span><br>");
 });
-
+}
+displayRecentSearches();
 // This will add all of the results on to your page
 function addToPage(data) {
     // create a div to contain the results
@@ -87,6 +95,7 @@ function addToPage(data) {
     data.forEach(restaurant => {
         // grab the address out of the restuarnt
         var address = restaurant.vicinity;
+        var rating = restaurant.rating;
         // grab the name of the restaurant and create and H1 with the name as text
         var title = $("<h1 class='newh1'>").text(restaurant.name);
         // append the restaurant name to the container div
@@ -97,10 +106,13 @@ function addToPage(data) {
             var aTag = photo.html_attributions[0];
             // parse the string into html
             var link = $.parseHTML(aTag)[0];
+            var ratingPara = $("<p>");
+            ratingPara.html("Rating: " + rating);
             // set the newly parsed a tag's inner html to be the address of the restaurant 
             link.innerHTML = address;
             // append that link to the container div
             div.append(link);
+            div.append(ratingPara);
         })
     });
     // append the container div to the results div in our html
