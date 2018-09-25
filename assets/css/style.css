@@ -5,7 +5,7 @@ body {
     max-width: 85%;
 }
 #header {
-    font-family: cursive;
+    font-family: 'Dancing Script', cursive;
 }
 button {
     margin-top: 2em;
@@ -22,8 +22,13 @@ button {
     padding: 15px;
     border-radius: 7px;
     text-align: center;
-    font-family: cursive;
+    font-family: 'Dancing Script', cursive;    
     font-size: 3em;
+}
+.search-item {
+    font-family: 'Dancing Script', cursive;    
+    font-size: 1.5em;
+    font-weight: 700;
 }
 hr {
     color: gray;
@@ -31,11 +36,12 @@ hr {
 .history {
     border-radius: 7px;
     padding: 15px;
-    font-size: 15px;
+    font-size: 20px;
+    /* text-transform:capitalize; */
 
 }
 
-.newh1:nth-child(odd) {
+#results>div>h1 {
     background-color: lightgray;
     padding: 15px;
     border-radius: 7px;
@@ -44,7 +50,7 @@ hr {
     margin-top: 50px;     
 }
 #result {
-    font-family: cursive;
+    font-family: 'Dancing Script', cursive;
 }
 /* h1 {
     background-color: crimson;
