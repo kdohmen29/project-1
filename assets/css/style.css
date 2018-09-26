@@ -1,4 +1,9 @@
 body {
+    background-image: url("../css/Dollarphotoclub_66082123-825x510.jpg");
+    background-color: khaki;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     margin: auto;
     margin-top: 2em;
     margin-bottom: 2em;
@@ -6,13 +11,24 @@ body {
 }
 #header {
     font-family: 'Dancing Script', cursive;
+    opacity: .9;
+    border-radius: 7px;
+
+}
+#food-type {
+    background-color: grey;
+    opacity: .9;
+    color: white;
+    border-radius: 7px;
+    padding: 10px;
+
 }
 button {
     margin-top: 2em;
 }
 .kindOfFood {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: .5fr .5fr 1fr;
 
     grid-gap: 30px;
     margin: 30px;
@@ -48,17 +64,21 @@ hr {
     padding: 15px;
     border-radius: 7px;
 }
+.linkInfo{
+    background-color: grey;
+    padding: 1em;
+    border-radius: 7px;
+    opacity: .9;
+
+}
+a {
+    color: white;
+}
 .progress {
     margin-top: 50px;     
 }
 #result {
     font-family: 'Dancing Script', cursive;
+    border-radius: 7px;
+    opacity: .9;
 }
-/* h1 {
-    background-color: crimson;
-    border-radius: 12px;
-    margin: auto;
-    margin: 1em;
-    width: 75%;
-    text-align: center;
-} */
