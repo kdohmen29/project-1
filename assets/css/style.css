@@ -30,6 +30,7 @@ button {
     font-family: 'Dancing Script', cursive;    
     font-size: 1.5em;
     font-weight: 700;
+    text-decoration: underline;
 }
 hr {
     color: gray;
