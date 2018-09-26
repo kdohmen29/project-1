@@ -8,6 +8,17 @@ $(document).ready(function () {
         storageBucket: "lunch-project-2b999.appspot.com",
         messagingSenderId: "251100820568"
     };
+    var position;
+    function getPosition(currentPosition) {
+        position = currentPosition;
+        // log the position object
+        console.log(currentPosition);
+        // store the latitued and longitude into variables
+
+        console.log(lat, lon);
+        // pass the latitude and longitude into a function that searches for restuarants close by
+    }
+    navigator.geolocation.getCurrentPosition(getPosition);
     firebase.initializeApp(config);
     var userData = firebase.database().ref();
     $("#result").hide();
@@ -19,20 +30,12 @@ $(document).ready(function () {
         $("#loading").show();
         M.toast({ html: "Hunger no More!" })
         // Get the users position and then call the getPosition function
-        navigator.geolocation.getCurrentPosition(getPosition);
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        googlePlacesSearch(lat, lon);
+        
         // Called when a user allows us to access their position
 
-        function getPosition(position) {
-            // log the position object
-            console.log(position);
-            // store the latitued and longitude into variables
-            var lat = position.coords.latitude;
-            var lon = position.coords.longitude;
-
-            console.log(lat, lon);
-            // pass the latitude and longitude into a function that searches for restuarants close by
-            googlePlacesSearch(lat, lon);
-        }
 
         // find restuarants within a 12.42 mile(20 km) radius of the lat lon passed in
         function googlePlacesSearch(lat, lon) {

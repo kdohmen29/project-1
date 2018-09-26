@@ -23,13 +23,13 @@ body {
     padding: 10px;
 
 }
-button {
+#submit {
     margin-top: 2em;
+    border-radius: 7px;
 }
 .kindOfFood {
     display: grid;
     grid-template-columns: .5fr .5fr 1fr;
-
     grid-gap: 30px;
     margin: 30px;
 }
@@ -55,8 +55,6 @@ hr {
     border-radius: 7px;
     padding: 15px;
     font-size: 20px;
-    /* text-transform:capitalize; */
-
 }
 
 #results>div>h1 {
