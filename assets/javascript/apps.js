@@ -87,7 +87,7 @@ $(document).ready(function () {
     // This will add all of the results on to your page
     function addToPage(data) {
         // create a div to contain the results
-        var div = $("<div>");
+        var div = $("<div class='linkInfo'>");
         // for each result do the following
         data.forEach(restaurant => {
             // grab the address out of the restuarnt
